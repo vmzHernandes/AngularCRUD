@@ -19,8 +19,6 @@ export class RemoverFuncionarioComponent {
   // Remove funcionário por ID
   inputIdRemove = NaN;
   removeFuncionarioPorId() {
-    console.log('função remover clicada')
-    console.log(this.FuncionarioLista)
     var i = 0;
     // Verifica se o funcionário existe
     if (!this.FuncionarioLista.find((funcionario) => funcionario.id === this.inputIdRemove)) {

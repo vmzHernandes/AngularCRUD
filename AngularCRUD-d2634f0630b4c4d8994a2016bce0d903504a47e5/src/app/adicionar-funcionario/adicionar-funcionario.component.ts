@@ -35,9 +35,6 @@ export class AdicionarFuncionarioComponent {
   inputCargoAdd = '';
 
   addFuncionario() {
-    console.log('funcao adicionar clicada')
-
-    // Ao criar um novoFunc chamando a função novoFuncionario, o erro não ocorre mais
     const novoFunc = this.novoFuncionario()
     novoFunc.id = Math.max.apply(null, this.FuncionarioLista.map(function (maxValue) { return maxValue.id; })) + 1;
     novoFunc.nome = this.inputNomeAdd;
@@ -46,7 +43,5 @@ export class AdicionarFuncionarioComponent {
 
     // Adiciona novoFuncionario ao array de obj Funcionario[]
     this.FuncionarioLista.push(novoFunc);
-    console.log(this.FuncionarioLista)
-    console.log(novoFunc)
   }
 }

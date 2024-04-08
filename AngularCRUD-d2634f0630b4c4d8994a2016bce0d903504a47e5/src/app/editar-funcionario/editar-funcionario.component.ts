@@ -38,27 +38,33 @@ export class EditarFuncionarioComponent {
 
     // Se o funcionário existe, edita ele
     } else {
+
+      const formEdit = document.getElementById('form-edit')
+      if (formEdit) {
+        formEdit.style.display = 'block'
+      }
+      
       for (var k = 0; k < this.FuncionarioLista.length; k++) {
 
         // Verifica se o id do funcionário da linha K é igual ao ID do input de edição, se sim, edita
         if (this.FuncionarioLista[k].id === this.inputIdEdit) {
           // Dado ID, edita nome do funcionário de ID correspondente
           if (this.inputNomeEdit == '') {
-            console.log('nome vazio');
+            console.log('Campo "nome" vazio, nenhuma alteração foi feita');
           } else {
             this.FuncionarioLista[k].nome = this.inputNomeEdit;
           }
 
           // Dado ID, edite idade do funcionário de ID correspondente
           if (isNaN(this.inputIdadeEdit)) {
-            console.log('idade vazia');
+            console.log('Campo "idade" vazio, nenhuma alteração foi feita');
           } else {
             this.FuncionarioLista[k].idade = this.inputIdadeEdit
           }
 
           // Dado ID, edita cargo do funcionário de ID correspondente
           if (this.inputCargoEdit == '') {
-            console.log('cargo vazio')
+            console.log('Campo "cargo" vazio, nenhuma alteração foi feita')
           } else {
             this.FuncionarioLista[k].cargo = this.inputCargoEdit;
           }

@@ -17,7 +17,6 @@ export class HomeComponent {
   // Recebe a função declarada no parent
   @Input() onButtonClick: any;
   removeFuncionario() {
-    console.log('remove na tabela clicado')
     // Seleciona a tabela e as linhas da tabela
     const tabela = document.getElementById('tabela')
     const linhas = tabela?.getElementsByTagName('tr')
@@ -40,7 +39,6 @@ export class HomeComponent {
 
   // *** ALTERAR DEPOIS ***
     editaFuncionario() {
-      console.log('edita na tabela clicado')
       // Seleciona a tabela e as linhas da tabela
       const tabela = document.getElementById('tabela')
       const linhas = tabela?.getElementsByTagName('tr')

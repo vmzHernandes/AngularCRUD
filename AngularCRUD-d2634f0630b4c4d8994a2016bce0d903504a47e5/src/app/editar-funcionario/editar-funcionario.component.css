@@ -62,3 +62,7 @@ form p {
   display: none;
   color: red;
 }
+
+#form-edit {
+  display: none;
+}
