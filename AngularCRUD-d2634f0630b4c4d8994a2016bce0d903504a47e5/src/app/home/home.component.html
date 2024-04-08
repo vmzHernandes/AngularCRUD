@@ -1,6 +1,13 @@
+<!-- NÃO FUNCIONA -->
+<!-- <app-adicionar-funcionario [FuncionarioLista]="Funcionarios"></app-adicionar-funcionario> -->
+
+<!-- FUNCIONAM -->
+<app-editar-funcionario [FuncionarioLista]="Funcionarios"></app-editar-funcionario>
+<app-remover-funcionario [FuncionarioLista]="Funcionarios"></app-remover-funcionario>
+
 <h1>Lista de Funcionarios</h1>
 
-<table *ngIf="this.FuncionarioLista.length > 0" id="tabela">
+<table *ngIf="this.Funcionarios.length > 0" id="tabela">
   <thead>
     <tr>
       <th>ID</th>
@@ -11,19 +18,19 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let f of FuncionarioLista">
+    <tr *ngFor="let f of Funcionarios">
       <td>{{f.id}}</td>
       <td>{{f.nome}}</td>
       <td>{{f.idade}}</td>
       <td>{{f.cargo}}</td>
       <td>
         <div class="botoes">
-          <button class="table-btn">Editar</button>
-          <button class="table-btn">Remover</button>
+          <button class="table-btn" (click)="editaFuncionario()">Editar</button>
+          <button class="table-btn" (click)="removeFuncionario()">Remover</button>
         </div>
       </td>
     </tr>
   </tbody>
 </table>
 
-<adicionar-funcionario [FuncionarioLista]='FuncionarioLista'></adicionar-funcionario>
+

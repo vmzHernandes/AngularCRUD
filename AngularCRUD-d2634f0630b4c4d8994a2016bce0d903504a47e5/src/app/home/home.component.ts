@@ -6,7 +6,7 @@ import { EditarFuncionarioComponent } from '../editar-funcionario/editar-funcion
 import { RemoverFuncionarioComponent } from '../remover-funcionario/remover-funcionario.component';
 
 @Component({
-  selector: 'home',
+  selector: 'app-home',
   standalone: true,
   imports: [CommonModule, AdicionarFuncionarioComponent, EditarFuncionarioComponent, RemoverFuncionarioComponent],
   templateUrl: './home.component.html',
@@ -14,8 +14,49 @@ import { RemoverFuncionarioComponent } from '../remover-funcionario/remover-func
 })
 
 export class HomeComponent {
+  // Recebe a função declarada no parent
+  @Input() onButtonClick: any;
+  removeFuncionario() {
+    console.log('remove na tabela clicado')
+    // Seleciona a tabela e as linhas da tabela
+    const tabela = document.getElementById('tabela')
+    const linhas = tabela?.getElementsByTagName('tr')
+
+    // Loop para percorrer as linhas e atribuir IDs
+    for (var i = 0; i < this.Funcionarios.length; i++) {
+      // Para cada iteração, a linha é a linha atual da iteração
+      let linha = linhas![i];
+      // Atribui ID para a linha de acordo com o id do funcionario na base de dados
+      linha.id = `${this.Funcionarios[i].id}`
+
+      // Remove o funcionário da db e, consequentemente, da tabela
+      if (this.Funcionarios[i].id == Number(linha.id)) {
+        this.Funcionarios.splice(i, 1)
+        break
+      }
+    }
+  }
+
+
+  // *** ALTERAR DEPOIS ***
+    editaFuncionario() {
+      console.log('edita na tabela clicado')
+      // Seleciona a tabela e as linhas da tabela
+      const tabela = document.getElementById('tabela')
+      const linhas = tabela?.getElementsByTagName('tr')
+
+      // Loop para percorrer as linhas e atribuir IDs
+      for (var i = 0; i < this.Funcionarios.length; i++) {
+        // Para cada iteração, a linha é a linha atual da iteração
+        let linha = linhas![i];
+        // Atribui ID para a linha de acordo com o id do funcionario na base de dados
+        linha.id = `${this.Funcionarios[i].id}`
+        console.log(`id da linha ${i}: ${linha.id}`)
+      }
+    }
+
   // Base de dados
-    FuncionarioLista: Funcionario[] = [
+    Funcionarios: Funcionario[] = [
       {
       id: 1111,
       nome: 'Nome teste 1',
@@ -37,45 +78,6 @@ export class HomeComponent {
     ];
 
 
-  // Recebe a função declarada no parent
-  @Input() onButtonClick: any;
-  removeFuncionario() {
-    console.log('remove na tabelaclicado')
-    // Seleciona a tabela e as linhas da tabela
-    const tabela = document.getElementById('tabela')
-    const linhas = tabela?.getElementsByTagName('tr')
-
-    // Loop para percorrer as linhas e atribuir IDs
-    for (var i = 0; i < this.FuncionarioLista.length - 1; i++) {
-      // Para cada iteração, a linha é a linha atual da iteração
-      let linha = linhas![i];
-      // Atribui ID para a linha de acordo com o id do funcionario na base de dados
-      linha.id = `${this.FuncionarioLista[i].id}`
-
-      // Remove o funcionário da db e, consequentemente, da tabela
-      if (this.FuncionarioLista[i].id == Number(linha.id)) {
-        let remover = this.FuncionarioLista.splice(i, 1)
-        break
-      }
-    }
-  }
-
-
-  // *** ALTERAR DEPOIS ***
-  editaFuncionario() {
-    // Seleciona a tabela e as linhas da tabela
-    const tabela = document.getElementById('tabela')
-    const linhas = tabela?.getElementsByTagName('tr')
-
-    // Loop para percorrer as linhas e atribuir IDs
-    for (var i = 0; i < this.FuncionarioLista.length; i++) {
-      // Para cada iteração, a linha é a linha atual da iteração
-      let linha = linhas![i];
-      // Atribui ID para a linha de acordo com o id do funcionario na base de dados
-      linha.id = `${this.FuncionarioLista[i].id}`
-      console.log(`id da linha ${i}: ${linha.id}`)
-    }
-  }
 }
 
 

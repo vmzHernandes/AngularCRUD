@@ -9,7 +9,7 @@ import { RemoverFuncionarioComponent } from './remover-funcionario/remover-funci
   standalone: true,
   imports: [AdicionarFuncionarioComponent, HomeComponent, EditarFuncionarioComponent, RemoverFuncionarioComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 
 export class AppComponent {

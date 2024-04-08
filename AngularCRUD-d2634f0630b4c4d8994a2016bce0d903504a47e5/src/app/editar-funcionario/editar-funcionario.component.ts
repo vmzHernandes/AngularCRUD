@@ -1,12 +1,14 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Funcionario } from '../funcionario';
 import { FormsModule } from '@angular/forms';
+import { Output, EventEmitter } from '@angular/core';
 
 
 @Component({
-  selector: 'editar-funcionario',
+  selector: 'app-editar-funcionario',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './editar-funcionario.component.html',
   styleUrl: './editar-funcionario.component.css'
 })
@@ -19,9 +21,7 @@ export class EditarFuncionarioComponent {
   inputIdadeEdit = NaN;
   inputCargoEdit = '';
 
-  editarFuncionario() {
-    console.log('funcao editar clicada')
-    console.log(this.FuncionarioLista)
+  editarFuncionarioPorId() {
 
     // Verifica se o funcionário existe
     if (!this.FuncionarioLista.find((funcionario) => funcionario.id === this.inputIdEdit)) {
@@ -67,4 +67,7 @@ export class EditarFuncionarioComponent {
       }
     }
   }
+
+  @Output() onButtonClick = new EventEmitter<any>();
+  removeFuncionario() { }
 }
