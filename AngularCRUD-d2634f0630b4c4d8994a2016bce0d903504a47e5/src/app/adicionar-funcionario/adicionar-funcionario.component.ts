@@ -2,13 +2,12 @@ import { Funcionario } from '../funcionario';
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HomeComponent } from '../home/home.component';
 
 
 @Component({
   selector: 'app-adicionar-funcionario',
   standalone: true,
-  imports: [CommonModule, HomeComponent, FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './adicionar-funcionario.component.html',
   styleUrl: './adicionar-funcionario.component.css',
 })
