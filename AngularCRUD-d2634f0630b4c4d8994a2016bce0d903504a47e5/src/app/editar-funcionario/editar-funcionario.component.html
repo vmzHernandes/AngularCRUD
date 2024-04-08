@@ -1,0 +1,37 @@
+<div class="gerenciar">
+  <div class="gerenciar-form">
+    <h2>Editar Funcionário</h2>
+
+    <form (submit)="editarFuncionario()">
+      <!-- Verifica se o funcionário com tal ID existe -->
+      <div class="input-control">
+        <label>ID:</label>
+        <input type="number" for="Id" [(ngModel)]="inputIdEdit" name="inputIdEdit" required>
+      </div>
+
+      <p id="erroEdit">Funcionário não encontrado</p>
+
+      <!-- Se existe, exibe esse form de edição -->
+      <div class="form-edit">
+        <div class="input-control">
+          <label>Nome</label>
+          <input type="text" for="nome" id="nomeEdit" [(ngModel)]="inputNomeEdit" name="inputNomeEdit">
+        </div>
+
+        <div class="input-control">
+          <label>Idade</label>
+          <input type="number" for="idade" id="idadeEdit" [(ngModel)]="inputIdadeEdit" name="inputIdadeEdit">
+        </div>
+
+        <div class="input-control">
+          <label>Cargo</label>
+          <input type="text" for="cargo" id="cargoEdit" [(ngModel)]="inputCargoEdit" name="inputCargoEdit">
+        </div>
+      </div>
+
+      <div class="input-control">
+        <input type="submit" value="Editar">
+      </div>
+    </form>
+  </div>
+</div>

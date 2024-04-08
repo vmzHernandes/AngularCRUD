@@ -1,0 +1,13 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  width: auto;
+  background-color: purple;
+  margin-bottom: 3.5rem;
+}
+
+header h1 {
+  color: white;
+}
