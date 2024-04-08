@@ -38,7 +38,6 @@ export class EditarFuncionarioComponent {
 
     // Se o funcionário existe, edita ele
     } else {
-      console.log('funcionario existe')
       for (var k = 0; k < this.FuncionarioLista.length; k++) {
 
         // Verifica se o id do funcionário da linha K é igual ao ID do input de edição, se sim, edita
@@ -51,7 +50,7 @@ export class EditarFuncionarioComponent {
           }
 
           // Dado ID, edite idade do funcionário de ID correspondente
-          if (this.inputIdadeEdit.toString() == null) {
+          if (isNaN(this.inputIdadeEdit)) {
             console.log('idade vazia');
           } else {
             this.FuncionarioLista[k].idade = this.inputIdadeEdit
