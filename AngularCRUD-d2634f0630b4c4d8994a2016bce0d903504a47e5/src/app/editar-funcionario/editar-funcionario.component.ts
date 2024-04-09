@@ -43,7 +43,7 @@ export class EditarFuncionarioComponent {
       if (formEdit) {
         formEdit.style.display = 'block'
       }
-      
+
       for (var k = 0; k < this.FuncionarioLista.length; k++) {
 
         // Verifica se o id do funcionário da linha K é igual ao ID do input de edição, se sim, edita

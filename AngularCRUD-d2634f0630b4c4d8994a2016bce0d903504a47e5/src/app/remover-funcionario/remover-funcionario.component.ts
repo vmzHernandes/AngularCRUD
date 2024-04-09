@@ -22,17 +22,11 @@ export class RemoverFuncionarioComponent {
     var i = 0;
     // Verifica se o funcionário existe
     if (!this.FuncionarioLista.find((funcionario) => funcionario.id === this.inputIdRemove)) {
-      // Se a div de id='erro' existe, executa o for
       const erro = document.getElementById('erroRemove');
-      if (erro) {
-        erro.style.display = 'block'
-        setTimeout(() => {
-          if (erro) {
-            erro.style.display = 'none';
-          }
-        }, 2000)
-      }
+      erro!.style.display = 'block'
+      setTimeout(() => { erro!.style.display = 'none' }, 2000)
     }
+
     for (i; i < this.FuncionarioLista.length; i++) {
       if (this.FuncionarioLista[i].id == this.inputIdRemove) {
         // Se o ID existe, remove da lista
@@ -40,6 +34,7 @@ export class RemoverFuncionarioComponent {
       }
     }
   }
+
 
   @Output() onButtonClick = new EventEmitter<any>();
   removeFuncionario() { }

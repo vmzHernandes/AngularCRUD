@@ -28,6 +28,31 @@
           <button class="table-btn" (click)="removeFuncionario()">Remover</button>
         </div>
       </td>
+
+      <td id="table-form">
+        <form (submit)="editaFuncionario()" class="form-edit">
+          <div id="form-edit">
+            <div class="input-control">
+              <label>Nome</label>
+              <input type="text" for="nome" id="nomeEdit" [(ngModel)]="nomeEdit" name="inputNomeEdit">
+            </div>
+
+            <div class="input-control">
+              <label>Idade</label>
+              <input type="number" for="idade" id="idadeEdit" [(ngModel)]="idadeEdit" name="inputIdadeEdit">
+            </div>
+
+            <div class="input-control">
+              <label>Cargo</label>
+              <input type="text" for="cargo" id="cargoEdit" [(ngModel)]="cargoEdit" name="inputCargoEdit">
+            </div>
+          </div>
+
+          <div class="input-control">
+            <input type="submit" value="Editar">
+          </div>
+        </form>
+      </td>
     </tr>
   </tbody>
 </table>

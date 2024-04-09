@@ -35,6 +35,7 @@ export class AdicionarFuncionarioComponent {
 
   addFuncionario() {
     const novoFunc = this.novoFuncionario()
+    // Pega o maior ID do array e adiciona 1
     novoFunc.id = Math.max.apply(null, this.FuncionarioLista.map(function (maxValue) { return maxValue.id; })) + 1;
     novoFunc.nome = this.inputNomeAdd;
     novoFunc.idade = this.inputIdadeAdd;
