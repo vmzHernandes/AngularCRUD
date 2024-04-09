@@ -27,14 +27,8 @@ export class EditarFuncionarioComponent {
     if (!this.FuncionarioLista.find((funcionario) => funcionario.id === this.inputIdEdit)) {
       // Se a div de id='erro' existe, executa o for
       const erro = document.getElementById('erroEdit');
-      if (erro) {
-        erro.style.display = 'block'
-        setTimeout(() => {
-          if (erro) {
-            erro.style.display = 'none';
-          }
-        }, 2000)
-      }
+      erro!.style.display = 'block'
+      setTimeout(() => { erro!.style.display = 'none' }, 2000)
 
     // Se o funcionário existe, edita ele
     } else {

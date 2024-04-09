@@ -17,28 +17,13 @@ import { FormsModule } from '@angular/forms';
 export class HomeComponent {
   // Recebe a função declarada no parent
   @Input() onButtonClick: any;
-  removeFuncionario() {
-    // TS não reconhece o tipo específico de elemento ao usar getElementById
-    // Então adicionamos 'as HTMLTableElement' para dizer que é uma tabela
-    let tabela = document.getElementById('tabela') as HTMLTableElement
-    let tbody = tabela.querySelector('tbody')!
-    let tr = tbody.querySelectorAll('tr')
 
-    // Loop para percorrer a tabela de funcionarios
-    for (var i = 0; i < this.Funcionarios.length; i++) {
-      // Pega o conteudo da célula 0 (a célula do ID) de cada linha e converte pra number
-      var celula = Number(tr[i].cells[0].innerHTML)
-
-      // Remove o funcionário da db e, consequentemente, da tabela
-      if (this.Funcionarios[i].id == celula) {
-        this.Funcionarios.splice(i, 1)
-        break
-      }
-    }
+  removeFuncionario(id: number) {
+    this.Funcionarios = this.Funcionarios.filter((u) => u.id !== id);
   }
 
 
-  // *** ALTERAR DEPOIS ***
+  // *** EDITAR FUNCIONÁRIO - Erro: Só edita o primeiro funcionário da db
   inputIdEdit = NaN
   nomeEdit = '';
   idadeEdit = NaN;
@@ -52,24 +37,28 @@ export class HomeComponent {
     } else {
       form.style.display = 'block'
     }
+
     // Seleciona a tabela e as linhas da tabela
     let tabela = document.getElementById('tabela') as HTMLTableElement
     let tbody = tabela.querySelector('tbody')!
     let tr = tbody.querySelectorAll('tr')
 
-    for (var i = 0; i < this.Funcionarios.length; i++) {
+    for (var j = 0; j < tr.length; j++) {
+      tr[j].id = `linha${j}`
+      let linha = document.getElementById(`linha${j}`) as HTMLTableRowElement
+    }
+
+    for (var i = 0; i < tr.length; i++) {
       if (this.nomeEdit == '') {
         console.log('Campo "nome" vazio, nenhuma alteração foi feita');
       } else {
         this.Funcionarios[i].nome = this.nomeEdit;
       }
-
       if (isNaN(this.idadeEdit)) {
         console.log('Campo "idade" vazio, nenhuma alteração foi feita');
       } else {
         this.Funcionarios[i].idade = this.idadeEdit
       }
-
       if (this.cargoEdit == '') {
         console.log('Campo "cargo" vazio, nenhuma alteração foi feita')
       } else {
@@ -78,7 +67,6 @@ export class HomeComponent {
       break
     }
   }
-
 
   // Base de dados
     Funcionarios: Funcionario[] = [
@@ -101,8 +89,6 @@ export class HomeComponent {
       cargo: 'Cargo teste 3',
       },
     ];
-
-
 }
 
 
