@@ -4,12 +4,12 @@ import { Funcionario } from '../funcionario';
 import { AdicionarFuncionarioComponent } from '../adicionar-funcionario/adicionar-funcionario.component';
 import { EditarFuncionarioComponent } from '../editar-funcionario/editar-funcionario.component';
 import { RemoverFuncionarioComponent } from '../remover-funcionario/remover-funcionario.component';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, AdicionarFuncionarioComponent, EditarFuncionarioComponent, RemoverFuncionarioComponent, FormsModule],
+  imports: [CommonModule, AdicionarFuncionarioComponent, EditarFuncionarioComponent, RemoverFuncionarioComponent, FormsModule, ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -18,49 +18,61 @@ export class HomeComponent {
   // Recebe a função declarada no parent
   @Input() onButtonClick: any;
 
+  // Remove o usuário
   removeFuncionario(id: number) {
+    // filter(): Percorre o array e remove o objeto que possua o ID da variavel 'id'
+    // (u) => u.id !== id: Recebe um parametro u e, se o 'id' de u for igual ao 'id' do funcionario, remove ele
     this.Funcionarios = this.Funcionarios.filter((u) => u.id !== id);
   }
 
 
   // *** EDITAR FUNCIONÁRIO - Erro: Só edita o primeiro funcionário da db
-  inputIdEdit = NaN
-  nomeEdit = '';
-  idadeEdit = NaN;
-  cargoEdit = '';
 
-  editaFuncionario() {
-
+  // Mostra/esconde o form
+  mostraForm() {
     let form = document.getElementById('table-form')!
     if (form.style.display === 'block') {
       form.style.display = 'none'
     } else {
       form.style.display = 'block'
     }
+  }
 
-    // Seleciona a tabela e as linhas da tabela
-    let tabela = document.getElementById('tabela') as HTMLTableElement
-    let tbody = tabela.querySelector('tbody')!
-    let tr = tbody.querySelectorAll('tr')
-
-    for (var j = 0; j < tr.length; j++) {
-      tr[j].id = `linha${j}`
-      let linha = document.getElementById(`linha${j}`) as HTMLTableRowElement
+  // Esconde o form ao clicar no botão 'Cancelar'
+  cancelaEdit() {
+    let form = document.getElementById('table-form')!
+    if (form.style.display === 'block') {
+      form.style.display = 'none'
     }
+  }
 
-    for (var i = 0; i < tr.length; i++) {
+  // Edita o funcionário
+  inputIdEdit = NaN
+  nomeEdit = '';
+  idadeEdit = NaN;
+  cargoEdit = '';
+
+  editaFuncionario() {
+    let mensagemNome = document.getElementById('mensagem-nome')
+    let mensagemIdade = document.getElementById('mensagem-idade')
+    let mensagemCargo = document.getElementById('mensagem-cargo')
+
+    for (var i = 0; i < this.Funcionarios.length; i++) {
       if (this.nomeEdit == '') {
-        console.log('Campo "nome" vazio, nenhuma alteração foi feita');
+        mensagemNome!.style.display = 'block'
+        setTimeout(() => { mensagemNome!.style.display = 'none' }, 2000)
       } else {
         this.Funcionarios[i].nome = this.nomeEdit;
       }
       if (isNaN(this.idadeEdit)) {
-        console.log('Campo "idade" vazio, nenhuma alteração foi feita');
+        mensagemIdade!.style.display = 'block'
+        setTimeout(() => { mensagemIdade!.style.display = 'none' }, 2000)
       } else {
         this.Funcionarios[i].idade = this.idadeEdit
       }
       if (this.cargoEdit == '') {
-        console.log('Campo "cargo" vazio, nenhuma alteração foi feita')
+        mensagemCargo!.style.display = 'block'
+        setTimeout(() => { mensagemCargo!.style.display = 'none' }, 2000)
       } else {
         this.Funcionarios[i].cargo = this.cargoEdit;
       }
@@ -69,26 +81,28 @@ export class HomeComponent {
   }
 
   // Base de dados
-    Funcionarios: Funcionario[] = [
-      {
-      id: 1111,
-      nome: 'Nome teste 1',
-      idade: 1,
-      cargo: 'Cargo teste 1',
-      },
-      {
-      id: 1112,
-      nome: 'Nome teste 2',
-      idade: 2,
-      cargo: 'Cargo teste 2',
-      },
-      {
-      id: 1113,
-      nome: 'Nome teste 3',
-      idade: 3,
-      cargo: 'Cargo teste 3',
-      },
-    ];
+  Funcionarios: Funcionario[] = [
+    {
+    id: 1111,
+    nome: 'Nome teste 1',
+    idade: 1,
+    cargo: 'Cargo teste 1',
+    },
+    {
+    id: 1112,
+    nome: 'Nome teste 2',
+    idade: 2,
+    cargo: 'Cargo teste 2',
+    },
+    {
+    id: 1113,
+    nome: 'Nome teste 3',
+    idade: 3,
+    cargo: 'Cargo teste 3',
+    },
+  ];
 }
+
+
 
 

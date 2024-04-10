@@ -1,8 +1,4 @@
-<!-- NÃO FUNCIONA -->
-<app-adicionar-funcionario [FuncionarioLista]="Funcionarios"></app-adicionar-funcionario>
 
-<app-editar-funcionario [FuncionarioLista]="Funcionarios"></app-editar-funcionario>
-<app-remover-funcionario [FuncionarioLista]="Funcionarios"></app-remover-funcionario>
 
 <h1>Lista de Funcionarios</h1>
 
@@ -24,7 +20,7 @@
       <td>{{f.cargo}}</td>
       <td>
         <div class="botoes">
-          <button class="table-btn" (click)="editaFuncionario()">Editar</button>
+          <button class="table-btn" (click)="mostraForm()" name="edit-btn">Editar</button>
           <button class="table-btn" (click)="removeFuncionario(f.id)">Remover</button>
         </div>
       </td>
@@ -36,20 +32,25 @@
               <label>Nome</label>
               <input type="text" for="nome" id="nomeEdit" [(ngModel)]="nomeEdit" name="inputNomeEdit">
             </div>
+            <p id="mensagem-nome">Campo "nome" vazio, nenhuma alteração foi feita</p>
+
 
             <div class="input-control">
               <label>Idade</label>
               <input type="number" for="idade" id="idadeEdit" [(ngModel)]="idadeEdit" name="inputIdadeEdit">
             </div>
+            <p id="mensagem-idade">Campo "idade" vazio, nenhuma alteração foi feita</p>
 
             <div class="input-control">
               <label>Cargo</label>
               <input type="text" for="cargo" id="cargoEdit" [(ngModel)]="cargoEdit" name="inputCargoEdit">
             </div>
+            <p id="mensagem-cargo">Campo "cargo" vazio, nenhuma alteração foi feita</p>
           </div>
 
           <div class="input-control">
             <input type="submit" value="Editar">
+            <input type="button" value="Cancelar" (click)="cancelaEdit()">
           </div>
         </form>
       </td>
@@ -57,4 +58,6 @@
   </tbody>
 </table>
 
-
+<app-adicionar-funcionario [FuncionarioLista]="Funcionarios"></app-adicionar-funcionario>
+<app-editar-funcionario [FuncionarioLista]="Funcionarios"></app-editar-funcionario>
+<app-remover-funcionario [FuncionarioLista]="Funcionarios"></app-remover-funcionario>

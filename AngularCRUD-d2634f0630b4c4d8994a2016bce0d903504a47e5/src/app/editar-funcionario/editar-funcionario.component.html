@@ -2,35 +2,41 @@
   <div class="gerenciar-form">
     <h2>Editar Funcionário</h2>
 
-    <form (submit)="editarFuncionarioPorId()">
-      <!-- Verifica se o funcionário com tal ID existe -->
+    <form (submit)="verificarFuncionarioPorId()" id="form-verificacao">
       <div class="input-control">
-        <label>ID:</label>
+        <label>ID</label>
         <input type="number" for="Id" [(ngModel)]="inputIdEdit" name="inputIdEdit" required>
       </div>
-
       <p id="erroEdit">Funcionário não encontrado</p>
 
-      <!-- Se existe, exibe esse form de edição -->
-      <div id="form-edit">
+      <form (submit)="editarFuncionarioPorId()" id="form-edicao">
         <div class="input-control">
           <label>Nome</label>
           <input type="text" for="nome" id="nomeEdit" [(ngModel)]="inputNomeEdit" name="inputNomeEdit">
         </div>
+        <p id="mensagem-nome-edit">Campo "nome" vazio, nenhuma alteração foi feita</p>
+
 
         <div class="input-control">
           <label>Idade</label>
           <input type="number" for="idade" id="idadeEdit" [(ngModel)]="inputIdadeEdit" name="inputIdadeEdit">
         </div>
+        <p id="mensagem-idade-edit">Campo "idade" vazio, nenhuma alteração foi feita</p>
+
 
         <div class="input-control">
           <label>Cargo</label>
           <input type="text" for="cargo" id="cargoEdit" [(ngModel)]="inputCargoEdit" name="inputCargoEdit">
         </div>
-      </div>
+        <p id="mensagem-cargo-edit">Campo "cargo" vazio, nenhuma alteração foi feita</p>
+
+        <div class="input-control">
+          <input type="submit" value="Editar">
+        </div>
+      </form>
 
       <div class="input-control">
-        <input type="submit" value="Editar">
+        <input type="submit" value="Verificar" id="input-edit-submit">
       </div>
     </form>
   </div>

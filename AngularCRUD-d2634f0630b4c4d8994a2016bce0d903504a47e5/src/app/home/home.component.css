@@ -87,7 +87,7 @@ input[type=number] {
 }
 /* --- */
 
-form input[type='submit'] {
+form input[type='submit'], form input[type='button'] {
   height: 2.5rem;
   width: 5rem;
   border: none;
@@ -104,4 +104,9 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+#mensagem-nome, #mensagem-idade, #mensagem-cargo {
+  font-size: 14px;
+  display: none;
 }

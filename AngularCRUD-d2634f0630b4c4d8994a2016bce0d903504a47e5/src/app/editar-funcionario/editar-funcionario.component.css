@@ -15,8 +15,13 @@ button {
   flex-direction: column;
 }
 
-form {
+#form-verificacao {
   width: 50%;
+}
+
+#form-edicao {
+  width: 100%;
+  display: none;
 }
 
 form input {
@@ -63,6 +68,11 @@ form p {
   color: red;
 }
 
-#form-edit {
+#form {
+  display: none;
+}
+
+#mensagem-nome-edit, #mensagem-idade-edit, #mensagem-cargo-edit {
+  font-size: 14px;
   display: none;
 }

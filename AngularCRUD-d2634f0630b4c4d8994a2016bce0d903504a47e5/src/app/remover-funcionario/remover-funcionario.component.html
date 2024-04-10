@@ -4,12 +4,13 @@
 
     <form (submit)="removeFuncionarioPorId()">
       <div class="input-control">
-        <label>ID:</label>
+        <label>ID</label>
         <input type="number" for="Id" [(ngModel)]="inputIdRemove" name="inputIdRemove" required>
       </div>
 
       <p id="erroRemove">Funcionário não encontrado</p>
 
+      <p id="sucessoRemove">Funcionário removido</p>
       <div class="input-control">
         <input type="submit" value="Remover">
       </div>

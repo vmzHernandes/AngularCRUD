@@ -31,6 +31,9 @@ export class RemoverFuncionarioComponent {
       if (this.FuncionarioLista[i].id == this.inputIdRemove) {
         // Se o ID existe, remove da lista
         this.FuncionarioLista.splice(i, 1);
+        const sucesso = document.getElementById('sucessoRemove');
+        sucesso!.style.display = 'block'
+        setTimeout(() => { sucesso!.style.display = 'none' }, 2000)
       }
     }
   }

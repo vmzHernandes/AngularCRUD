@@ -16,52 +16,56 @@ import { Output, EventEmitter } from '@angular/core';
 export class EditarFuncionarioComponent {
   @Input() FuncionarioLista: Funcionario[] = [];
 
+  verificarFuncionarioPorId() {
+    if (!this.FuncionarioLista.find((funcionario) => funcionario.id === this.inputIdEdit)) {
+      const erro = document.getElementById('erroEdit');
+      erro!.style.display = 'block'
+      setTimeout(() => { erro!.style.display = 'none' }, 2000)
+    } else {
+      // Mostra o form de edição
+      const formEdit = document.getElementById('form-edicao')
+      formEdit!.style.display = 'block'
+
+      // Esconde o botão de editar
+      const inputEditSubmit = document.getElementById('input-edit-submit')
+      inputEditSubmit!.style.display = 'none'
+    }
+  }
+
+
   inputIdEdit = NaN
   inputNomeEdit = '';
   inputIdadeEdit = NaN;
   inputCargoEdit = '';
 
   editarFuncionarioPorId() {
+    for (var i = 0; i < this.FuncionarioLista.length; i++) {
+      if (this.FuncionarioLista[i].id === this.inputIdEdit) {
 
-    // Verifica se o funcionário existe
-    if (!this.FuncionarioLista.find((funcionario) => funcionario.id === this.inputIdEdit)) {
-      // Se a div de id='erro' existe, executa o for
-      const erro = document.getElementById('erroEdit');
-      erro!.style.display = 'block'
-      setTimeout(() => { erro!.style.display = 'none' }, 2000)
+        let mensagemNomeEdit = document.getElementById('mensagem-nome-edit')
+        let mensagemIdadeEdit = document.getElementById('mensagem-idade-edit')
+        let mensagemCargoEdit = document.getElementById('mensagem-cargo-edit')
 
-    // Se o funcionário existe, edita ele
-    } else {
-
-      const formEdit = document.getElementById('form-edit')
-      if (formEdit) {
-        formEdit.style.display = 'block'
-      }
-
-      for (var k = 0; k < this.FuncionarioLista.length; k++) {
-
-        // Verifica se o id do funcionário da linha K é igual ao ID do input de edição, se sim, edita
-        if (this.FuncionarioLista[k].id === this.inputIdEdit) {
-          // Dado ID, edita nome do funcionário de ID correspondente
-          if (this.inputNomeEdit == '') {
-            console.log('Campo "nome" vazio, nenhuma alteração foi feita');
-          } else {
-            this.FuncionarioLista[k].nome = this.inputNomeEdit;
-          }
-
-          // Dado ID, edite idade do funcionário de ID correspondente
-          if (isNaN(this.inputIdadeEdit)) {
-            console.log('Campo "idade" vazio, nenhuma alteração foi feita');
-          } else {
-            this.FuncionarioLista[k].idade = this.inputIdadeEdit
-          }
-
-          // Dado ID, edita cargo do funcionário de ID correspondente
-          if (this.inputCargoEdit == '') {
-            console.log('Campo "cargo" vazio, nenhuma alteração foi feita')
-          } else {
-            this.FuncionarioLista[k].cargo = this.inputCargoEdit;
-          }
+        if (this.inputNomeEdit === '') {
+          mensagemNomeEdit!.style.display = 'block'
+          setTimeout(() => { mensagemNomeEdit!.style.display = 'none' }, 2000)
+        } else {
+          this.FuncionarioLista[i].nome = this.inputNomeEdit;
+          console.log('nome editado')
+        }
+        if (isNaN(this.inputIdadeEdit)) {
+          mensagemIdadeEdit!.style.display = 'block'
+          setTimeout(() => { mensagemIdadeEdit!.style.display = 'none' }, 2000)
+        } else {
+          this.FuncionarioLista[i].idade = this.inputIdadeEdit
+          console.log('idade editado')
+        }
+        if (this.inputCargoEdit === '') {
+          mensagemCargoEdit!.style.display = 'block'
+          setTimeout(() => { mensagemCargoEdit!.style.display = 'none' }, 2000)
+        } else {
+          this.FuncionarioLista[i].cargo = this.inputCargoEdit;
+          console.log('cargo editado')
         }
       }
     }

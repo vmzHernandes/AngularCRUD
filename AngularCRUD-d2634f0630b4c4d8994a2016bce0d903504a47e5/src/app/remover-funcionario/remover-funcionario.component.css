@@ -56,9 +56,16 @@ input:focus {
   justify-content: space-around;
 }
 
-form p {
+#erroRemove {
   display: flex;
   text-align: center;
   display: none;
   color: red;
+}
+
+#sucessoRemove {
+  display: flex;
+  text-align: center;
+  display: none;
+  color: green;
 }
