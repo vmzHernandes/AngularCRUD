@@ -28,7 +28,6 @@ export class HomeComponent {
 
   // *** EDITAR FUNCIONÁRIO - Erro: Só edita o primeiro funcionário da db
 
-  // Mostra/esconde o form
   mostraForm() {
     let form = document.getElementById('table-form')!
     if (form.style.display === 'block') {
@@ -38,7 +37,6 @@ export class HomeComponent {
     }
   }
 
-  // Esconde o form ao clicar no botão 'Cancelar'
   cancelaEdit() {
     let form = document.getElementById('table-form')!
     if (form.style.display === 'block') {
@@ -64,18 +62,21 @@ export class HomeComponent {
       } else {
         this.Funcionarios[i].nome = this.nomeEdit;
       }
+
       if (isNaN(this.idadeEdit)) {
         mensagemIdade!.style.display = 'block'
         setTimeout(() => { mensagemIdade!.style.display = 'none' }, 2000)
       } else {
         this.Funcionarios[i].idade = this.idadeEdit
       }
+
       if (this.cargoEdit == '') {
         mensagemCargo!.style.display = 'block'
         setTimeout(() => { mensagemCargo!.style.display = 'none' }, 2000)
       } else {
         this.Funcionarios[i].cargo = this.cargoEdit;
       }
+
       break
     }
   }

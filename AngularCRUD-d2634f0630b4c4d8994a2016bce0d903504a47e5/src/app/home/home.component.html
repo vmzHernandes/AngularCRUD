@@ -1,62 +1,64 @@
-
-
 <h1>Lista de Funcionarios</h1>
 
-<table *ngIf="this.Funcionarios.length > 0" id="tabela">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nome</th>
-      <th>Idade</th>
-      <th>Cargo</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let f of Funcionarios">
-      <td>{{f.id}}</td>
-      <td>{{f.nome}}</td>
-      <td>{{f.idade}}</td>
-      <td>{{f.cargo}}</td>
-      <td>
-        <div class="botoes">
-          <button class="table-btn" (click)="mostraForm()" name="edit-btn">Editar</button>
-          <button class="table-btn" (click)="removeFuncionario(f.id)">Remover</button>
-        </div>
-      </td>
-
-      <td id="table-form">
-        <form (submit)="editaFuncionario()" class="form-edit">
-          <div id="form-edit">
-            <div class="input-control">
-              <label>Nome</label>
-              <input type="text" for="nome" id="nomeEdit" [(ngModel)]="nomeEdit" name="inputNomeEdit">
-            </div>
-            <p id="mensagem-nome">Campo "nome" vazio, nenhuma alteração foi feita</p>
-
-
-            <div class="input-control">
-              <label>Idade</label>
-              <input type="number" for="idade" id="idadeEdit" [(ngModel)]="idadeEdit" name="inputIdadeEdit">
-            </div>
-            <p id="mensagem-idade">Campo "idade" vazio, nenhuma alteração foi feita</p>
-
-            <div class="input-control">
-              <label>Cargo</label>
-              <input type="text" for="cargo" id="cargoEdit" [(ngModel)]="cargoEdit" name="inputCargoEdit">
-            </div>
-            <p id="mensagem-cargo">Campo "cargo" vazio, nenhuma alteração foi feita</p>
+<div class="container">
+  <table *ngIf="this.Funcionarios.length > 0" id="tabela">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Cargo</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let f of Funcionarios">
+        <td>{{f.id}}</td>
+        <td>{{f.nome}}</td>
+        <td>{{f.idade}}</td>
+        <td>{{f.cargo}}</td>
+        <td>
+          <div class="botoes">
+            <button class="table-btn" (click)="mostraForm()" name="edit-btn">Editar</button>
+            <button class="table-btn" (click)="removeFuncionario(f.id)">Remover</button>
           </div>
+        </td>
 
-          <div class="input-control">
-            <input type="submit" value="Editar">
-            <input type="button" value="Cancelar" (click)="cancelaEdit()">
-          </div>
-        </form>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        <!-- Erro: todos botões 'editar' levam ao edit da primeira linha -->
+
+        <td id="table-form">
+          <form (submit)="editaFuncionario()">
+            <div id="form-edit">
+              <div class="input-control">
+                <label>Nome</label>
+                <input type="text" for="nome" id="nomeEdit" [(ngModel)]="nomeEdit" name="inputNomeEdit">
+              </div>
+              <p id="mensagem-nome">Campo "nome" vazio, nenhuma alteração foi feita</p>
+
+
+              <div class="input-control">
+                <label>Idade</label>
+                <input type="number" for="idade" id="idadeEdit" [(ngModel)]="idadeEdit" name="inputIdadeEdit">
+              </div>
+              <p id="mensagem-idade">Campo "idade" vazio, nenhuma alteração foi feita</p>
+
+              <div class="input-control">
+                <label>Cargo</label>
+                <input type="text" for="cargo" id="cargoEdit" [(ngModel)]="cargoEdit" name="inputCargoEdit">
+              </div>
+              <p id="mensagem-cargo">Campo "cargo" vazio, nenhuma alteração foi feita</p>
+            </div>
+
+            <div class="input-control">
+              <input type="submit" value="Editar">
+              <input type="button" value="Cancelar" (click)="cancelaEdit()">
+            </div>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <app-adicionar-funcionario [FuncionarioLista]="Funcionarios"></app-adicionar-funcionario>
 <app-editar-funcionario [FuncionarioLista]="Funcionarios"></app-editar-funcionario>

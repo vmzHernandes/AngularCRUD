@@ -51,21 +51,18 @@ export class EditarFuncionarioComponent {
           setTimeout(() => { mensagemNomeEdit!.style.display = 'none' }, 2000)
         } else {
           this.FuncionarioLista[i].nome = this.inputNomeEdit;
-          console.log('nome editado')
         }
         if (isNaN(this.inputIdadeEdit)) {
           mensagemIdadeEdit!.style.display = 'block'
           setTimeout(() => { mensagemIdadeEdit!.style.display = 'none' }, 2000)
         } else {
           this.FuncionarioLista[i].idade = this.inputIdadeEdit
-          console.log('idade editado')
         }
         if (this.inputCargoEdit === '') {
           mensagemCargoEdit!.style.display = 'block'
           setTimeout(() => { mensagemCargoEdit!.style.display = 'none' }, 2000)
         } else {
           this.FuncionarioLista[i].cargo = this.inputCargoEdit;
-          console.log('cargo editado')
         }
       }
     }

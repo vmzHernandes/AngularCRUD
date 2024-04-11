@@ -1,3 +1,13 @@
+h1, table {
+  margin: 1rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+/* TABELA */
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -18,6 +28,11 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
+.botoes {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .table-btn {
   border: none;
   background-color: purple;
@@ -27,25 +42,33 @@ tr:nth-child(even) {
   padding: 0.5rem;
 }
 
-.botoes {
-  display: flex;
-  justify-content: space-evenly;
-}
 
 /* FORM */
 #table-form {
   display: none;
   width: 100%;
-}
-
-.table-form form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  border-left: none;
 }
 
 #form-edit {
   width: 100%;
+}
+
+.input-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#mensagem-nome, #mensagem-idade, #mensagem-cargo {
+  font-size: 14px;
+  display: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 form button {
@@ -100,13 +123,5 @@ input:focus {
   outline: none;
 }
 
-.input-control {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
 
-#mensagem-nome, #mensagem-idade, #mensagem-cargo {
-  font-size: 14px;
-  display: none;
-}
+
